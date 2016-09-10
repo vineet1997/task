@@ -5,14 +5,12 @@ export default Ember.Controller.extend({
     authenticate(){
       let username = this.get('identification');
       let password = this.get('password');
-      return Ember.$.ajax({
-        method:'POST',
-        url:'http://localhost:3000/register',
-        data: {username:username,password:password}
-      }).then(result =>{
-        console.log(username + password);
-        console.log(result);
-      });
+      var user = this.store.createRecord('user', {
+  username: username,
+  password: password
+});
+console.log(username);
+user.save();
     }
   }
 });
