@@ -10,7 +10,9 @@ export default Ember.Controller.extend({
   password: password
 });
 console.log(username);
-user.save();
+user.save().catch(function(){
+  user.get('errors').errorsFor('username');
+  });
     }
   }
 });
